@@ -44,6 +44,20 @@
                 HorizontalOptions="Center"
                 />
 
+            <Label
+                Text="{Binding Tempo}"
+                FontSize="64"
+                SemanticProperties.Description="Tempo value"
+                HorizontalOptions="Center"
+                />
+
+            <Slider
+                Minimum="10"
+                Maximum="300"
+                WidthRequest="480"
+                Value="{Binding Tempo}"
+                />
+
             <Button
                 x:Name="PlaySoundBtn"
                 Text="Play/Stop Sound"

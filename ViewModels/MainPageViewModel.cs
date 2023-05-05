@@ -14,17 +14,35 @@ public class MainPageViewModel : INotifyPropertyChanged {
     private IAudioPlayer _audioPlayer;
     private Stream _moveCursorSound;
     private Boolean _isPlaying = false;
+    private int _tempo = 120;
+    private int _milliSecondsPerTick = 500;
 
     #endregion
 
     public ICommand PlayOrStopSoundCommand { get; private set; }
 
+    public const int MIN_TEMPO = 10;
+    public const int MAX_TEMPO = 300;
 
     public Boolean IsPlaying {
         get => _isPlaying;
         private set {
             if (_isPlaying != value) {
                 _isPlaying = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
+    public int Tempo {
+        get => _tempo;
+        set {
+            if (value < MIN_TEMPO) value = MIN_TEMPO;
+            if (value > MAX_TEMPO) value = MAX_TEMPO;
+
+            if (_tempo != value) {
+                _tempo = value;
+                setMilliSecondsPerTickByTempo();
                 OnPropertyChanged();
             }
         }
@@ -47,6 +65,10 @@ public class MainPageViewModel : INotifyPropertyChanged {
 
     #endregion
 
+    private void setMilliSecondsPerTickByTempo() {
+        _milliSecondsPerTick = (int)(60000.0 / _tempo);
+    }
+
     private async void StartPlayLoop() {
         if (_audioPlayer == null) {
             _audioPlayer = _audioManager.CreatePlayer(_moveCursorSound);
@@ -59,7 +81,7 @@ public class MainPageViewModel : INotifyPropertyChanged {
 
             _audioPlayer.Play();
 
-            await Task.Delay(500);
+            await Task.Delay(_milliSecondsPerTick);
         }
     }
 
