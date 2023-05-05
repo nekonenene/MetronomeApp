@@ -17,7 +17,7 @@ public partial class MainPage : ContentPage {
     int count = 0;
 
     public MainPage(ILoggerFactory loggerFactory, IAudioManager audioManager) {
-		InitializeComponent();
+        InitializeComponent();
 
         _logger = loggerFactory.CreateLogger<MainPage>();
         _audioManager = audioManager;
@@ -27,18 +27,18 @@ public partial class MainPage : ContentPage {
         });
     }
 
-	private void OnCounterClicked(object sender, EventArgs e) {
+    private void OnCounterClicked(object sender, EventArgs e) {
         count++;
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
+        if (count == 1)
+            CounterBtn.Text = $"Clicked {count} time";
+        else
+            CounterBtn.Text = $"Clicked {count} times";
 
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+        SemanticScreenReader.Announce(CounterBtn.Text);
+    }
 
-    private void PlaySound() {
+    private void PlayOrStopSound() {
         if (_audioPlayer == null) {
             _audioPlayer = _audioManager.CreatePlayer(_moveCursorSound);
         }
@@ -56,6 +56,6 @@ public partial class MainPage : ContentPage {
         _logger.LogWarning("aaaWarn");
         _logger.LogError("aaaError");
 
-        PlaySound();
+        PlayOrStopSound();
     }
 }
