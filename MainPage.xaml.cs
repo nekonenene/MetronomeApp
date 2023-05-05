@@ -11,8 +11,6 @@ public partial class MainPage : ContentPage {
 
     #endregion
 
-    int count = 0;
-
     public MainPage(ILoggerFactory loggerFactory, MainPageViewModel mainPageViewModel) {
         InitializeComponent();
 
