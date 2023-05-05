@@ -8,10 +8,10 @@ public partial class MainPage : ContentPage
 {
     #region Members
 
-    private readonly ILogger logger;
-    private readonly IAudioManager audioManager;
-    private IAudioPlayer audioPlayer;
-    private Stream moveCursorSound;
+    private readonly ILogger _logger;
+    private readonly IAudioManager _audioManager;
+    private IAudioPlayer _audioPlayer;
+    private Stream _moveCursorSound;
 
     #endregion
 
@@ -21,12 +21,12 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 
-        logger = loggerFactory.CreateLogger<MainPage>();
-        this.audioManager = audioManager;
+        _logger = loggerFactory.CreateLogger<MainPage>();
+        _audioManager = audioManager;
 
         Task.Run(async () =>
         {
-            moveCursorSound = await FileSystem.OpenAppPackageFileAsync("move_cursor1.mp3");
+            _moveCursorSound = await FileSystem.OpenAppPackageFileAsync("move_cursor1.mp3");
         });
     }
 
@@ -44,25 +44,25 @@ public partial class MainPage : ContentPage
 
     private void PlaySound()
     {
-        if (audioPlayer == null)
+        if (_audioPlayer == null)
         {
-            audioPlayer = audioManager.CreatePlayer(moveCursorSound);
+            _audioPlayer = _audioManager.CreatePlayer(_moveCursorSound);
         }
 
-        if (audioPlayer.IsPlaying)
+        if (_audioPlayer.IsPlaying)
         {
-            audioPlayer.Stop();
+            _audioPlayer.Stop();
         }
 
-        audioPlayer.Play();
+        _audioPlayer.Play();
     }
 
     private void OnPlaySoundButtonClicked(object sender, EventArgs e)
     {
-        logger.LogDebug("aaaDebug");
-        logger.LogInformation("aaaInfo");
-        logger.LogWarning("aaaWarn");
-        logger.LogError("aaaError");
+        _logger.LogDebug("aaaDebug");
+        _logger.LogInformation("aaaInfo");
+        _logger.LogWarning("aaaWarn");
+        _logger.LogError("aaaError");
 
         PlaySound();
     }
