@@ -20,6 +20,9 @@ public partial class MainPage : ContentPage {
 
         BindingContext = mainPageViewModel;
 
+        // スライダーの min, max が Binding で決まる関係上、Value をここで明示的に設定してあげないとスライダーの初期位置がおかしくなる
+        TempoSlider.Value = mainPageViewModel.Tempo;
+
         _logger.LogInformation("End of init MainPage");
     }
 

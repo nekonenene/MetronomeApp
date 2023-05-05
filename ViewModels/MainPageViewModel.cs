@@ -12,6 +12,7 @@ public class MainPageViewModel : INotifyPropertyChanged {
     private readonly ILogger _logger;
     private readonly IAudioManager _audioManager;
     private IAudioPlayer _audioPlayer;
+    private CancellationTokenSource _cancellationTokenSource;
     private Stream _moveCursorSound;
     private Boolean _isPlaying = false;
     private int _tempo = 120;
@@ -21,8 +22,12 @@ public class MainPageViewModel : INotifyPropertyChanged {
 
     public ICommand PlayOrStopSoundCommand { get; private set; }
 
-    public const int MIN_TEMPO = 10;
-    public const int MAX_TEMPO = 300;
+    public double MinTempo {
+        get => 10;
+    }
+    public double MaxTempo {
+        get => 300; // TODO: 最大テンポはユーザー側で設定できるようにしたい
+    }
 
     public Boolean IsPlaying {
         get => _isPlaying;
@@ -37,12 +42,15 @@ public class MainPageViewModel : INotifyPropertyChanged {
     public int Tempo {
         get => _tempo;
         set {
-            if (value < MIN_TEMPO) value = MIN_TEMPO;
-            if (value > MAX_TEMPO) value = MAX_TEMPO;
+            _logger.LogInformation($"Tempo Value: {value}");
+
+            if (value < MinTempo) value = (int)MinTempo;
+            if (value > MaxTempo) value = (int)MaxTempo;
 
             if (_tempo != value) {
                 _tempo = value;
                 setMilliSecondsPerTickByTempo();
+                ResetTickCounter();
                 OnPropertyChanged();
             }
         }
@@ -53,6 +61,7 @@ public class MainPageViewModel : INotifyPropertyChanged {
     public MainPageViewModel(ILoggerFactory loggerFactory, IAudioManager audioManager) {
         _logger = loggerFactory.CreateLogger<MainPageViewModel>();
         _audioManager = audioManager;
+        _cancellationTokenSource = new CancellationTokenSource();
 
         PlayOrStopSoundCommand = new Command(PlayOrStopSound);
 
@@ -69,19 +78,27 @@ public class MainPageViewModel : INotifyPropertyChanged {
         _milliSecondsPerTick = (int)(60000.0 / _tempo);
     }
 
+    private void ResetTickCounter() {
+        _cancellationTokenSource.Cancel();
+    }
+
     private async void StartPlayLoop() {
         if (_audioPlayer == null) {
             _audioPlayer = _audioManager.CreatePlayer(_moveCursorSound);
         }
 
         while (IsPlaying) {
-            if (_audioPlayer.IsPlaying) {
-                _audioPlayer.Stop();
+            try {
+                if (_audioPlayer.IsPlaying) {
+                    _audioPlayer.Stop();
+                }
+
+                _audioPlayer.Play();
+
+                await Task.Delay(_milliSecondsPerTick, _cancellationTokenSource.Token);
+            } catch (TaskCanceledException) {
+                _cancellationTokenSource = new CancellationTokenSource();
             }
-
-            _audioPlayer.Play();
-
-            await Task.Delay(_milliSecondsPerTick);
         }
     }
 

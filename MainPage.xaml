@@ -52,8 +52,9 @@
                 />
 
             <Slider
-                Minimum="10"
-                Maximum="300"
+                x:Name="TempoSlider"
+                Minimum="{Binding MinTempo}"
+                Maximum="{Binding MaxTempo}"
                 WidthRequest="480"
                 Value="{Binding Tempo}"
                 />
