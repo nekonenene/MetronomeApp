@@ -21,7 +21,7 @@
                 />
 
             <HorizontalStackLayout
-                Margin="30 0 10"
+                Margin="0,30,0,10"
                 Padding="30,0"
                 Spacing="30"
                 HorizontalOptions="Center"
