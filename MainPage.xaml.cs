@@ -1,17 +1,22 @@
-﻿namespace MetronomeApp;
+using Microsoft.Extensions.Logging;
+
+namespace MetronomeApp;
 
 public partial class MainPage : ContentPage
 {
 	int count = 0;
+    private readonly ILogger logger;
 
-	public MainPage()
+	public MainPage(ILoggerFactory loggerFactory)
 	{
 		InitializeComponent();
-	}
+
+        logger = loggerFactory.CreateLogger<MainPage>();
+    }
 
 	private void OnCounterClicked(object sender, EventArgs e)
 	{
-		count++;
+        count++;
 
 		if (count == 1)
 			CounterBtn.Text = $"Clicked {count} time";
@@ -23,7 +28,9 @@ public partial class MainPage : ContentPage
 
     private void OnPlaySoundButtonClicked(object sender, EventArgs e)
     {
-        return;
+        logger.LogDebug("aaaDebug");
+        logger.LogInformation("aaaInfo");
+        logger.LogWarning("aaaWarn");
+        logger.LogError("aaaError");
     }
 }
-
