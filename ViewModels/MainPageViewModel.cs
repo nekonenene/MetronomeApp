@@ -35,6 +35,8 @@ public class MainPageViewModel : INotifyPropertyChanged {
             if (_isPlaying != value) {
                 _isPlaying = value;
                 OnPropertyChanged();
+                OnPropertyChanged("PlayOrStopButtonText");
+                OnPropertyChanged("PlayOrStopButtonBgColor");
             }
         }
     }
@@ -55,6 +57,9 @@ public class MainPageViewModel : INotifyPropertyChanged {
             }
         }
     }
+
+    public string PlayOrStopButtonText { get => _isPlaying ? "Stop Sound" : "Play Sound"; }
+    public Color PlayOrStopButtonBgColor { get => _isPlaying ? Color.FromArgb("#EC2121") : Color.FromArgb("#172C90"); } // #172C90
 
     #region Constructor
 

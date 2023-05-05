@@ -11,6 +11,7 @@
             Padding="30,0"
             Spacing="25"
             VerticalOptions="Center"
+            WidthRequest="360"
             >
 
             <Image
@@ -25,6 +26,7 @@
                 Padding="30,0"
                 Spacing="30"
                 HorizontalOptions="Center"
+                WidthRequest="360"
                 >
 
                 <Ellipse
@@ -77,9 +79,11 @@
                 />
 
             <Button
-                x:Name="PlaySoundBtn"
-                Text="Play/Stop Sound"
-                FontSize="24"
+                x:Name="PlayOrStopButton"
+                Padding="32,18"
+                Text="{Binding PlayOrStopButtonText}"
+                BackgroundColor="{Binding PlayOrStopButtonBgColor}"
+                FontSize="32"
                 SemanticProperties.Hint="Play or stop sound"
                 Command="{Binding PlayOrStopSoundCommand}"
                 HorizontalOptions="Center"
