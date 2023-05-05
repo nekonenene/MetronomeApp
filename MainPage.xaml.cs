@@ -6,11 +6,16 @@ namespace MetronomeApp;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    #region Members
+
     private readonly ILogger logger;
     private readonly IAudioManager audioManager;
     private IAudioPlayer audioPlayer;
     private Stream moveCursorSound;
+
+    #endregion
+
+    int count = 0;
 
     public MainPage(ILoggerFactory loggerFactory, IAudioManager audioManager)
 	{
@@ -39,11 +44,15 @@ public partial class MainPage : ContentPage
 
     private void PlaySound()
     {
-        //if (audioPlayer == null)
-        //{
-        //    audioPlayer = audioManager.CreatePlayer(moveCursorSound);
-        //}
-        audioPlayer = audioManager.CreatePlayer(moveCursorSound);
+        if (audioPlayer == null)
+        {
+            audioPlayer = audioManager.CreatePlayer(moveCursorSound);
+        }
+
+        if (audioPlayer.IsPlaying)
+        {
+            audioPlayer.Stop();
+        }
 
         audioPlayer.Play();
     }
