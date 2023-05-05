@@ -1,3 +1,4 @@
+using MetronomeApp.ViewModels;
 using Microsoft.Extensions.Logging;
 using Plugin.Maui.Audio;
 
@@ -15,6 +16,7 @@ public static class MauiProgram {
 
         builder.Services.AddSingleton(AudioManager.Current);
         builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<MainPageViewModel>();
 
 #if DEBUG
         builder.Logging.AddDebug();

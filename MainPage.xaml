@@ -49,7 +49,7 @@
                 Text="Play/Stop Sound"
                 FontSize="24"
                 SemanticProperties.Hint="Play or stop sound"
-                Clicked="OnPlaySoundButtonClicked"
+                Command="{Binding PlayOrStopSoundCommand}"
                 HorizontalOptions="Center"
                 />
 
