@@ -20,33 +20,50 @@
                 HorizontalOptions="Center"
                 />
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
+            <HorizontalStackLayout
+                Margin="30 0 10"
+                Padding="30,0"
+                Spacing="30"
                 HorizontalOptions="Center"
-                />
+                >
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App UI"
-                FontSize="18"
-                HorizontalOptions="Center"
-                />
+                <Ellipse
+                    Stroke="#BBBBBB"
+                    StrokeThickness="5"
+                    Fill="#EF462E"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    />
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                BackgroundColor="#512BD4"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center"
-                />
+                <Ellipse
+                    Stroke="#BBBBBB"
+                    StrokeThickness="5"
+                    Fill="#5C4747"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    />
+
+                <Ellipse
+                    Stroke="#BBBBBB"
+                    StrokeThickness="5"
+                    Fill="#5C4747"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    />
+
+                <Ellipse
+                    Stroke="#BBBBBB"
+                    StrokeThickness="5"
+                    Fill="#5C4747"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    />
+
+            </HorizontalStackLayout>
 
             <Label
                 Text="{Binding Tempo}"
-                FontSize="64"
+                FontSize="90"
                 SemanticProperties.Description="Tempo value"
                 HorizontalOptions="Center"
                 />
