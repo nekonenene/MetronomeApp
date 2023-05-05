@@ -1,4 +1,4 @@
-﻿namespace MetronomeApp;
+namespace MetronomeApp;
 
 public partial class App : Application
 {
