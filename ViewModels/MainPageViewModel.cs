@@ -110,6 +110,7 @@ public class MainPageViewModel : INotifyPropertyChanged {
     private void PlayOrStopSound() {
         if (IsPlaying) {
             IsPlaying = false;
+            ResetTickCounter();
         } else {
             IsPlaying = true;
             StartPlayLoop();
