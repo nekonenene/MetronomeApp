@@ -1,4 +1,3 @@
-using System.Xml.Serialization;
 using Microsoft.Extensions.Logging;
 using Plugin.Maui.Audio;
 
@@ -15,6 +14,7 @@ public partial class MainPage : ContentPage {
     #endregion
 
     int count = 0;
+    Boolean isPlaying = false;
 
     public MainPage(ILoggerFactory loggerFactory, IAudioManager audioManager) {
         InitializeComponent();
@@ -38,16 +38,29 @@ public partial class MainPage : ContentPage {
         SemanticScreenReader.Announce(CounterBtn.Text);
     }
 
-    private void PlayOrStopSound() {
+    private async void StartPlayLoop() {
         if (_audioPlayer == null) {
             _audioPlayer = _audioManager.CreatePlayer(_moveCursorSound);
         }
 
-        if (_audioPlayer.IsPlaying) {
-            _audioPlayer.Stop();
-        }
+        while (isPlaying) {
+            if (_audioPlayer.IsPlaying) {
+                _audioPlayer.Stop();
+            }
 
-        _audioPlayer.Play();
+            _audioPlayer.Play();
+
+            await Task.Delay(500);
+        }
+    }
+
+    private void PlayOrStopSound() {
+        if (isPlaying) {
+            isPlaying = false;
+        } else {
+            isPlaying = true;
+            StartPlayLoop();
+        }
     }
 
     private void OnPlaySoundButtonClicked(object sender, EventArgs e) {

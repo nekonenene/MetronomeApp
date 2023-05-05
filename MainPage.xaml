@@ -45,7 +45,8 @@
 
             <Button
                 x:Name="PlaySoundBtn"
-                Text="Play Sound"
+                Text="Play/Stop Sound"
+                BackgroundColor="#dd4444"
                 Clicked="OnPlaySoundButtonClicked"
                 HorizontalOptions="Center"
                 />
