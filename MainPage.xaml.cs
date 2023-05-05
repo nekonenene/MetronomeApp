@@ -10,6 +10,7 @@ public partial class MainPage : ContentPage
     private readonly ILogger logger;
     private readonly IAudioManager audioManager;
     private IAudioPlayer audioPlayer;
+    private Stream moveCursorSound;
 
     public MainPage(ILoggerFactory loggerFactory, IAudioManager audioManager)
 	{
@@ -17,6 +18,11 @@ public partial class MainPage : ContentPage
 
         logger = loggerFactory.CreateLogger<MainPage>();
         this.audioManager = audioManager;
+
+        Task.Run(async () =>
+        {
+            moveCursorSound = await FileSystem.OpenAppPackageFileAsync("move_cursor1.mp3");
+        });
     }
 
 	private void OnCounterClicked(object sender, EventArgs e)
@@ -31,12 +37,13 @@ public partial class MainPage : ContentPage
 		SemanticScreenReader.Announce(CounterBtn.Text);
 	}
 
-    private async void PlaySound()
+    private void PlaySound()
     {
-        if (audioPlayer == null)
-        {
-            audioPlayer = audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("move_cursor1.mp3"));
-        }
+        //if (audioPlayer == null)
+        //{
+        //    audioPlayer = audioManager.CreatePlayer(moveCursorSound);
+        //}
+        audioPlayer = audioManager.CreatePlayer(moveCursorSound);
 
         audioPlayer.Play();
     }
