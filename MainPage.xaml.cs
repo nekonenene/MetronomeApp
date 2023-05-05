@@ -4,8 +4,7 @@ using Plugin.Maui.Audio;
 
 namespace MetronomeApp;
 
-public partial class MainPage : ContentPage
-{
+public partial class MainPage : ContentPage {
     #region Members
 
     private readonly ILogger _logger;
@@ -17,21 +16,18 @@ public partial class MainPage : ContentPage
 
     int count = 0;
 
-    public MainPage(ILoggerFactory loggerFactory, IAudioManager audioManager)
-	{
+    public MainPage(ILoggerFactory loggerFactory, IAudioManager audioManager) {
 		InitializeComponent();
 
         _logger = loggerFactory.CreateLogger<MainPage>();
         _audioManager = audioManager;
 
-        Task.Run(async () =>
-        {
+        Task.Run(async () => {
             _moveCursorSound = await FileSystem.OpenAppPackageFileAsync("move_cursor1.mp3");
         });
     }
 
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
+	private void OnCounterClicked(object sender, EventArgs e) {
         count++;
 
 		if (count == 1)
@@ -42,23 +38,19 @@ public partial class MainPage : ContentPage
 		SemanticScreenReader.Announce(CounterBtn.Text);
 	}
 
-    private void PlaySound()
-    {
-        if (_audioPlayer == null)
-        {
+    private void PlaySound() {
+        if (_audioPlayer == null) {
             _audioPlayer = _audioManager.CreatePlayer(_moveCursorSound);
         }
 
-        if (_audioPlayer.IsPlaying)
-        {
+        if (_audioPlayer.IsPlaying) {
             _audioPlayer.Stop();
         }
 
         _audioPlayer.Play();
     }
 
-    private void OnPlaySoundButtonClicked(object sender, EventArgs e)
-    {
+    private void OnPlaySoundButtonClicked(object sender, EventArgs e) {
         _logger.LogDebug("aaaDebug");
         _logger.LogInformation("aaaInfo");
         _logger.LogWarning("aaaWarn");
