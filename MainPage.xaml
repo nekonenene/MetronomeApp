@@ -30,7 +30,7 @@
             <Label
                 Text="Welcome to .NET Multi-platform App UI"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                SemanticProperties.Description="Welcome to dot net Multi platform App UI"
                 FontSize="18"
                 HorizontalOptions="Center"
                 />
@@ -38,6 +38,7 @@
             <Button
                 x:Name="CounterBtn"
                 Text="Click me"
+                BackgroundColor="#512BD4"
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Center"
@@ -46,7 +47,8 @@
             <Button
                 x:Name="PlaySoundBtn"
                 Text="Play/Stop Sound"
-                BackgroundColor="#dd4444"
+                FontSize="24"
+                SemanticProperties.Hint="Play or stop sound"
                 Clicked="OnPlaySoundButtonClicked"
                 HorizontalOptions="Center"
                 />
