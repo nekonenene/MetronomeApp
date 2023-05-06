@@ -79,13 +79,13 @@
 
             <HorizontalStackLayout
                 Margin="0,0,0,30"
-                Spacing="20"
+                Spacing="15"
                 HorizontalOptions="Center"
                 >
 
                 <Button
                     Text="-10"
-                    BackgroundColor="#49A095"
+                    BackgroundColor="#45659D"
                     FontSize="32"
                     SemanticProperties.Hint="Tempo -10"
                     Command="{Binding MinusTempoCommand}"
@@ -95,22 +95,24 @@
 
                 <Button
                     Text="-1"
-                    BackgroundColor="#5CB860"
-                    FontSize="32"
+                    BackgroundColor="#68ACCB"
+                    FontSize="24"
                     SemanticProperties.Hint="Tempo -1"
                     Command="{Binding MinusTempoCommand}"
                     CommandParameter="1"
-                    WidthRequest="100"
+                    WidthRequest="70"
+                    HeightRequest="50"
                     />
 
                 <Button
                     Text="+1"
-                    BackgroundColor="#C39B55"
-                    FontSize="32"
+                    BackgroundColor="#DE8C6F"
+                    FontSize="24"
                     SemanticProperties.Hint="Tempo +1"
                     Command="{Binding PlusTempoCommand}"
                     CommandParameter="1"
-                    WidthRequest="100"
+                    WidthRequest="70"
+                    HeightRequest="50"
                     />
 
                 <Button
