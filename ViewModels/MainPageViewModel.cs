@@ -1,6 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.Logging;
 using Plugin.Maui.Audio;
+using System.Diagnostics;
 using System.Windows.Input;
 
 namespace MetronomeApp.ViewModels;
@@ -132,6 +133,19 @@ public class MainPageViewModel : ObservableObject {
         }
     }
 
+    private async Task WaitMilliSeconds(int milliSeconds) {
+        int elapsedMilliseconds = 0;
+        Stopwatch stopWatch = Stopwatch.StartNew();
+
+        while (elapsedMilliseconds < milliSeconds) {
+            elapsedMilliseconds = (int)stopWatch.ElapsedMilliseconds;
+            _logger.LogInformation("elapsedMilliseconds: " + elapsedMilliseconds);
+            await Task.Delay(1, _cancellationTokenSource.Token);
+        }
+
+        return;
+    }
+
     private async void StartPlayLoop() {
         if (_audioPlayer == null) {
             ResetAudioPlayer();
@@ -150,7 +164,7 @@ public class MainPageViewModel : ObservableObject {
                 _tickCounter = (_tickCounter + 1) % 4;
                 Twinkle(_tickCounter);
 
-                await Task.Delay(_milliSecondsPerTick, _cancellationTokenSource.Token);
+                await WaitMilliSeconds(_milliSecondsPerTick);
             } catch (TaskCanceledException) { // ResetTickCounter メソッドが呼ばれたときに Task.Delay が中断されここに来る
             }
         }
