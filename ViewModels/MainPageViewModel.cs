@@ -1,12 +1,23 @@
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.Logging;
 using Plugin.Maui.Audio;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace MetronomeApp.ViewModels;
 
-public class MainPageViewModel : INotifyPropertyChanged {
+public class MainPageViewModel : ObservableObject {
+    public class LightColors : ObservableObject {
+        readonly IDictionary<int, Color> _lights = new Dictionary<int, Color>();
+
+        public Color this[int index] {
+            get { return _lights.ContainsKey(index) ? _lights[index] : Color.FromArgb("#5C4747"); }
+            set {
+                _lights[index] = value;
+                OnPropertyChanged("Item[" + index + "]");
+            }
+        }
+    }
+
     #region Members
 
     private readonly ILogger _logger;
@@ -17,6 +28,8 @@ public class MainPageViewModel : INotifyPropertyChanged {
     private Boolean _isPlaying = false;
     private int _tempo = 120;
     private int _milliSecondsPerTick = 500;
+    private LightColors _tickLights;
+    private int _tickCounter = -1;
 
     #endregion
 
@@ -58,6 +71,11 @@ public class MainPageViewModel : INotifyPropertyChanged {
         }
     }
 
+    public LightColors TickLights {
+        get { return _tickLights ?? (_tickLights = new LightColors()); }
+        set { SetProperty(ref _tickLights, value); }
+    }
+
     public string PlayOrStopButtonText { get => _isPlaying ? "Stop Sound" : "Play Sound"; }
     public Color PlayOrStopButtonBgColor { get => _isPlaying ? Color.FromArgb("#EC2121") : Color.FromArgb("#172C90"); } // #172C90
 
@@ -85,6 +103,14 @@ public class MainPageViewModel : INotifyPropertyChanged {
 
     private void ResetTickCounter() {
         _cancellationTokenSource.Cancel();
+        _cancellationTokenSource = new CancellationTokenSource();
+        _tickCounter = -1;
+    }
+
+    private async void Twinkle(int index) {
+        TickLights[index] = Color.FromArgb("#EF462E");
+        await Task.Delay(100);
+        TickLights[index] = Color.FromArgb("#5C4747");
     }
 
     private async void StartPlayLoop() {
@@ -100,9 +126,12 @@ public class MainPageViewModel : INotifyPropertyChanged {
 
                 _audioPlayer.Play();
 
+                _tickCounter = (_tickCounter + 1) % 4;
+                _logger.LogInformation("tickCounter: " + _tickCounter);
+                Twinkle(_tickCounter);
+
                 await Task.Delay(_milliSecondsPerTick, _cancellationTokenSource.Token);
-            } catch (TaskCanceledException) {
-                _cancellationTokenSource = new CancellationTokenSource();
+            } catch (TaskCanceledException) { // ResetTickCounter メソッドが呼ばれたときに Task.Delay が中断されここに来る
             }
         }
     }
@@ -115,11 +144,5 @@ public class MainPageViewModel : INotifyPropertyChanged {
             IsPlaying = true;
             StartPlayLoop();
         }
-    }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    protected void OnPropertyChanged([CallerMemberName] string propertyName = "") {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
