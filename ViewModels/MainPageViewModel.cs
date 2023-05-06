@@ -97,8 +97,8 @@ public class MainPageViewModel : ObservableObject {
 
     #endregion
 
-    private void setMilliSecondsPerTickByTempo() {
-        _milliSecondsPerTick = (int)(60000.0 / _tempo);
+    private void ResetAudioPlayer() {
+        _audioPlayer = _audioManager.CreatePlayer(_moveCursorSound);
     }
 
     private void ResetTickCounter() {
@@ -107,16 +107,37 @@ public class MainPageViewModel : ObservableObject {
         _tickCounter = -1;
     }
 
+    private void setMilliSecondsPerTickByTempo() {
+        _milliSecondsPerTick = (int)(60000.0 / _tempo);
+    }
+
     private async void Twinkle(int index) {
         TickLights[index] = Color.FromArgb("#EF462E");
         await Task.Delay(100);
         TickLights[index] = Color.FromArgb("#5C4747");
     }
 
+    // オーディオデバイスが切り替わったり一時的に専有された場合にも再生を続けられるように
+    private async void AutoRefreshAudioPlayer() {
+        while (IsPlaying) {
+            try {
+                if (!_audioPlayer.IsPlaying) {
+                    ResetAudioPlayer();
+                }
+
+                await Task.Delay(1000, _cancellationTokenSource.Token);
+            } catch (TaskCanceledException) { // ResetTickCounter メソッドが呼ばれたときに Task.Delay が中断されここに来る
+                ResetAudioPlayer();
+            }
+        }
+    }
+
     private async void StartPlayLoop() {
         if (_audioPlayer == null) {
-            _audioPlayer = _audioManager.CreatePlayer(_moveCursorSound);
+            ResetAudioPlayer();
         }
+
+        AutoRefreshAudioPlayer();
 
         while (IsPlaying) {
             try {
@@ -127,7 +148,6 @@ public class MainPageViewModel : ObservableObject {
                 _audioPlayer.Play();
 
                 _tickCounter = (_tickCounter + 1) % 4;
-                _logger.LogInformation("tickCounter: " + _tickCounter);
                 Twinkle(_tickCounter);
 
                 await Task.Delay(_milliSecondsPerTick, _cancellationTokenSource.Token);
