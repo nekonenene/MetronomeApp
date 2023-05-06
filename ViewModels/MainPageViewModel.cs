@@ -34,6 +34,11 @@ public class MainPageViewModel : ObservableObject {
     #endregion
 
     public ICommand PlayOrStopSoundCommand { get; private set; }
+    public ICommand PlusTempoCommand { get; private set; }
+    public ICommand PlusOneTempoCommand { get; private set; }
+    public ICommand PlusTenTempoCommand { get; private set; }
+    public ICommand MinusOneTempoCommand { get; private set; }
+    public ICommand MinusTenTempoCommand { get; private set; }
 
     public double MinTempo {
         get => 10;
@@ -57,8 +62,6 @@ public class MainPageViewModel : ObservableObject {
     public int Tempo {
         get => _tempo;
         set {
-            _logger.LogInformation($"Tempo Value: {value}");
-
             if (value < MinTempo) value = (int)MinTempo;
             if (value > MaxTempo) value = (int)MaxTempo;
 
@@ -87,6 +90,11 @@ public class MainPageViewModel : ObservableObject {
         _cancellationTokenSource = new CancellationTokenSource();
 
         PlayOrStopSoundCommand = new Command(PlayOrStopSound);
+        PlusTempoCommand = new Command<string>(PlusTempo);
+        PlusOneTempoCommand = new Command(PlusOneTempo);
+        PlusTenTempoCommand = new Command(PlusTenTempo);
+        MinusOneTempoCommand = new Command(MinusOneTempo);
+        MinusTenTempoCommand = new Command(MinusTenTempo);
 
         Task.Run(async () => {
             _moveCursorSound = await FileSystem.OpenAppPackageFileAsync("move_cursor1.mp3");
@@ -164,5 +172,26 @@ public class MainPageViewModel : ObservableObject {
             IsPlaying = true;
             StartPlayLoop();
         }
+    }
+
+    private void PlusTempo(string addValueStr) {
+        int addValue = int.Parse(addValueStr);
+        Tempo += addValue;
+    }
+
+    private void PlusOneTempo() {
+        Tempo += 1;
+    }
+
+    private void PlusTenTempo() {
+        Tempo += 10;
+    }
+
+    private void MinusOneTempo() {
+        Tempo -= 1;
+    }
+
+    private void MinusTenTempo() {
+        Tempo -= 10;
     }
 }

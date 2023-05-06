@@ -11,7 +11,6 @@
             Padding="30,0"
             Spacing="25"
             VerticalOptions="Center"
-            WidthRequest="360"
             >
 
             <Image
@@ -78,6 +77,51 @@
                 Value="{Binding Tempo}"
                 />
 
+            <HorizontalStackLayout
+                Margin="0,0,0,30"
+                Spacing="20"
+                HorizontalOptions="Center"
+                >
+
+                <Button
+                    Text="-10"
+                    BackgroundColor="#49A095"
+                    FontSize="32"
+                    SemanticProperties.Hint="Tempo -10"
+                    Command="{Binding MinusTenTempoCommand}"
+                    WidthRequest="100"
+                    />
+
+                <Button
+                    Text="-1"
+                    BackgroundColor="#5CB860"
+                    FontSize="32"
+                    SemanticProperties.Hint="Tempo -1"
+                    Command="{Binding MinusOneTempoCommand}"
+                    WidthRequest="100"
+                    />
+
+                <Button
+                    Text="+1"
+                    BackgroundColor="#C39B55"
+                    FontSize="32"
+                    SemanticProperties.Hint="Tempo +1"
+                    Command="{Binding PlusOneTempoCommand}"
+                    WidthRequest="100"
+                    />
+
+                <Button
+                    Text="+10"
+                    BackgroundColor="#DE5E55"
+                    FontSize="32"
+                    SemanticProperties.Hint="Tempo +10"
+                    Command="{Binding PlusTempoCommand}"
+                    CommandParameter="10"
+                    WidthRequest="100"
+                    />
+
+            </HorizontalStackLayout>
+
             <Button
                 x:Name="PlayOrStopButton"
                 Padding="32,18"
@@ -87,8 +131,8 @@
                 SemanticProperties.Hint="Play or stop sound"
                 Command="{Binding PlayOrStopSoundCommand}"
                 HorizontalOptions="Center"
+                WidthRequest="480"
                 />
-
         </VerticalStackLayout>
     </ScrollView>
 
