@@ -6,7 +6,7 @@
     Shell.NavBarIsVisible="False"
     >
 
-    <ScrollView>
+    <ScrollView MinimumWidthRequest="500">
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25"
@@ -79,7 +79,7 @@
 
             <HorizontalStackLayout
                 Margin="0,0,0,30"
-                Spacing="15"
+                Spacing="8"
                 HorizontalOptions="Center"
                 >
 
@@ -90,29 +90,57 @@
                     SemanticProperties.Hint="Tempo -10"
                     Command="{Binding MinusTempoCommand}"
                     CommandParameter="10"
-                    WidthRequest="100"
+                    WidthRequest="90"
+                    HeightRequest="90"
+                    CornerRadius="90"
+                    />
+
+                <Button
+                    Text="-5"
+                    BackgroundColor="#6892CB"
+                    FontSize="22"
+                    SemanticProperties.Hint="Tempo -5"
+                    Command="{Binding MinusTempoCommand}"
+                    CommandParameter="5"
+                    WidthRequest="60"
+                    HeightRequest="60"
+                    CornerRadius="60"
                     />
 
                 <Button
                     Text="-1"
                     BackgroundColor="#68ACCB"
-                    FontSize="24"
+                    FontSize="20"
                     SemanticProperties.Hint="Tempo -1"
                     Command="{Binding MinusTempoCommand}"
                     CommandParameter="1"
-                    WidthRequest="70"
+                    WidthRequest="50"
                     HeightRequest="50"
+                    CornerRadius="50"
                     />
 
                 <Button
                     Text="+1"
                     BackgroundColor="#DE8C6F"
-                    FontSize="24"
+                    FontSize="20"
                     SemanticProperties.Hint="Tempo +1"
                     Command="{Binding PlusTempoCommand}"
                     CommandParameter="1"
-                    WidthRequest="70"
+                    WidthRequest="50"
                     HeightRequest="50"
+                    CornerRadius="50"
+                    />
+
+                <Button
+                    Text="+5"
+                    BackgroundColor="#E77767"
+                    FontSize="22"
+                    SemanticProperties.Hint="Tempo +5"
+                    Command="{Binding PlusTempoCommand}"
+                    CommandParameter="5"
+                    WidthRequest="60"
+                    HeightRequest="60"
+                    CornerRadius="60"
                     />
 
                 <Button
@@ -122,7 +150,9 @@
                     SemanticProperties.Hint="Tempo +10"
                     Command="{Binding PlusTempoCommand}"
                     CommandParameter="10"
-                    WidthRequest="100"
+                    WidthRequest="90"
+                    HeightRequest="90"
+                    CornerRadius="90"
                     />
 
             </HorizontalStackLayout>
