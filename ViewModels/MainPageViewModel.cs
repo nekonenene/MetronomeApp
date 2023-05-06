@@ -35,10 +35,7 @@ public class MainPageViewModel : ObservableObject {
 
     public ICommand PlayOrStopSoundCommand { get; private set; }
     public ICommand PlusTempoCommand { get; private set; }
-    public ICommand PlusOneTempoCommand { get; private set; }
-    public ICommand PlusTenTempoCommand { get; private set; }
-    public ICommand MinusOneTempoCommand { get; private set; }
-    public ICommand MinusTenTempoCommand { get; private set; }
+    public ICommand MinusTempoCommand { get; private set; }
 
     public double MinTempo {
         get => 10;
@@ -91,10 +88,7 @@ public class MainPageViewModel : ObservableObject {
 
         PlayOrStopSoundCommand = new Command(PlayOrStopSound);
         PlusTempoCommand = new Command<string>(PlusTempo);
-        PlusOneTempoCommand = new Command(PlusOneTempo);
-        PlusTenTempoCommand = new Command(PlusTenTempo);
-        MinusOneTempoCommand = new Command(MinusOneTempo);
-        MinusTenTempoCommand = new Command(MinusTenTempo);
+        MinusTempoCommand = new Command<string>(MinusTempo);
 
         Task.Run(async () => {
             _moveCursorSound = await FileSystem.OpenAppPackageFileAsync("move_cursor1.mp3");
@@ -174,24 +168,13 @@ public class MainPageViewModel : ObservableObject {
         }
     }
 
-    private void PlusTempo(string addValueStr) {
-        int addValue = int.Parse(addValueStr);
-        Tempo += addValue;
+    private void PlusTempo(string valueStr) {
+        int value = int.Parse(valueStr);
+        Tempo += value;
     }
 
-    private void PlusOneTempo() {
-        Tempo += 1;
-    }
-
-    private void PlusTenTempo() {
-        Tempo += 10;
-    }
-
-    private void MinusOneTempo() {
-        Tempo -= 1;
-    }
-
-    private void MinusTenTempo() {
-        Tempo -= 10;
+    private void MinusTempo(string valueStr) {
+        int value = int.Parse(valueStr);
+        Tempo -= value;
     }
 }
