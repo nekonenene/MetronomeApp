@@ -6,7 +6,7 @@
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
   IgnorableNamespaces="uap rescap">
 
-  <Identity Name="net-hatone-metronome" Publisher="CN=nekonenene" Version="0.1.0.0" />
+  <Identity Name="net-hatone-metronome" Publisher="CN=nekonenene" Version="0.2.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="102D2F27-3D3D-4CB9-A7BF-63A9279533C3" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -28,7 +28,7 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Metronome"
+        DisplayName="Metronome Plus 10"
         Description="Metronome App"
         Square150x150Logo="Resources\AppIcon\normal_tile.png"
         Square44x44Logo="Resources\AppIcon\app_icon.png"
