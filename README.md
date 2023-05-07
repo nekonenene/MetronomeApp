@@ -25,3 +25,10 @@
 * オーディオデバイスの切り替わりを検知し、停止ボタンを押さずとも自動で MediaPlayer を作り直す
 * ミリセカンドよりも細かい精度
 * PCが重いときでも精度が下がらないように
+
+
+## インストール方法
+
+デバッグでもインストールされますが、きちんとやるには以下の方法を用います。
+
+https://learn.microsoft.com/ja-jp/dotnet/maui/windows/deployment/publish-cli
