@@ -61,64 +61,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\AppIcon\app_icon.scale-100.png" />
-    <Content Include="Resources\AppIcon\app_icon.scale-125.png" />
-    <Content Include="Resources\AppIcon\app_icon.scale-150.png" />
-    <Content Include="Resources\AppIcon\app_icon.scale-200.png" />
-    <Content Include="Resources\AppIcon\app_icon.scale-400.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-16.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-16_altform-lightunplated.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-16_altform-unplated.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-24.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-24_altform-lightunplated.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-24_altform-unplated.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-256.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-256_altform-lightunplated.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-256_altform-unplated.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-32.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-32_altform-lightunplated.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-32_altform-unplated.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-48.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-48_altform-lightunplated.png" />
-    <Content Include="Resources\AppIcon\app_icon.targetsize-48_altform-unplated.png" />
-    <Content Include="Resources\AppIcon\badge_logo.scale-100.png" />
-    <Content Include="Resources\AppIcon\badge_logo.scale-125.png" />
-    <Content Include="Resources\AppIcon\badge_logo.scale-150.png" />
-    <Content Include="Resources\AppIcon\badge_logo.scale-200.png" />
-    <Content Include="Resources\AppIcon\badge_logo.scale-400.png" />
-    <Content Include="Resources\AppIcon\big_tile.scale-100.png" />
-    <Content Include="Resources\AppIcon\big_tile.scale-125.png" />
-    <Content Include="Resources\AppIcon\big_tile.scale-150.png" />
-    <Content Include="Resources\AppIcon\big_tile.scale-200.png" />
-    <Content Include="Resources\AppIcon\big_tile.scale-400.png" />
-    <Content Include="Resources\AppIcon\normal_tile.scale-100.png" />
-    <Content Include="Resources\AppIcon\normal_tile.scale-125.png" />
-    <Content Include="Resources\AppIcon\normal_tile.scale-150.png" />
-    <Content Include="Resources\AppIcon\normal_tile.scale-200.png" />
-    <Content Include="Resources\AppIcon\normal_tile.scale-400.png" />
-    <Content Include="Resources\AppIcon\pkg_logo.scale-100.png" />
-    <Content Include="Resources\AppIcon\pkg_logo.scale-125.png" />
-    <Content Include="Resources\AppIcon\pkg_logo.scale-150.png" />
-    <Content Include="Resources\AppIcon\pkg_logo.scale-200.png" />
-    <Content Include="Resources\AppIcon\pkg_logo.scale-400.png" />
-    <Content Include="Resources\AppIcon\small_tile.scale-100.png" />
-    <Content Include="Resources\AppIcon\small_tile.scale-125.png" />
-    <Content Include="Resources\AppIcon\small_tile.scale-150.png" />
-    <Content Include="Resources\AppIcon\small_tile.scale-200.png" />
-    <Content Include="Resources\AppIcon\small_tile.scale-400.png" />
-    <Content Include="Resources\AppIcon\splash.scale-100.png" />
-    <Content Include="Resources\AppIcon\splash.scale-125.png" />
-    <Content Include="Resources\AppIcon\splash.scale-150.png" />
-    <Content Include="Resources\AppIcon\splash.scale-200.png" />
-    <Content Include="Resources\AppIcon\splash.scale-400.png" />
-    <Content Include="Resources\AppIcon\wide_tile.scale-100.png" />
-    <Content Include="Resources\AppIcon\wide_tile.scale-125.png" />
-    <Content Include="Resources\AppIcon\wide_tile.scale-150.png" />
-    <Content Include="Resources\AppIcon\wide_tile.scale-200.png" />
-    <Content Include="Resources\AppIcon\wide_tile.scale-400.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
     <PackageReference Include="Plugin.Maui.Audio" Version="1.0.0" />
