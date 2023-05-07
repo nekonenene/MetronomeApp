@@ -31,4 +31,6 @@
 
 デバッグでもインストールされますが、きちんとやるには以下の方法を用います。
 
-https://learn.microsoft.com/ja-jp/dotnet/maui/windows/deployment/publish-cli
+* https://learn.microsoft.com/ja-jp/dotnet/maui/windows/deployment/publish-visual-studio-folder
+    * 「自動更新を有効にする」のチェックは外してください
+* https://learn.microsoft.com/ja-jp/dotnet/maui/windows/deployment/publish-cli
