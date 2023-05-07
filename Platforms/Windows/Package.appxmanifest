@@ -40,13 +40,13 @@
             <uap:ShowOn Tile="square310x310Logo"/>
           </uap:ShowNameOnTiles>
         </uap:DefaultTile >
-        <uap:SplashScreen Image="Resources\AppIcon\splash.png" />
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="landscape"/>
           <uap:Rotation Preference="portrait"/>
           <uap:Rotation Preference="landscapeFlipped"/>
           <uap:Rotation Preference="portraitFlipped"/></uap:InitialRotationPreference>
         <uap:LockScreen BadgeLogo="Resources\AppIcon\badge_logo.png" Notification="badgeAndTileText"/>
+        <uap:SplashScreen Image="Resources\AppIcon\splash.png"/>
       </uap:VisualElements>
     </Application>
   </Applications>

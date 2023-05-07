@@ -70,4 +70,70 @@
     <Folder Include="ViewModels\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="Resources\AppIcon\app_icon.png" />
+    <Content Include="Resources\AppIcon\app_icon.scale-100.png" />
+    <Content Include="Resources\AppIcon\app_icon.scale-125.png" />
+    <Content Include="Resources\AppIcon\app_icon.scale-150.png" />
+    <Content Include="Resources\AppIcon\app_icon.scale-200.png" />
+    <Content Include="Resources\AppIcon\app_icon.scale-400.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-16.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-16_altform-lightunplated.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-16_altform-unplated.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-24.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-24_altform-lightunplated.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-24_altform-unplated.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-256.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-256_altform-lightunplated.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-256_altform-unplated.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-32.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-32_altform-lightunplated.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-32_altform-unplated.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-48.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-48_altform-lightunplated.png" />
+    <Content Include="Resources\AppIcon\app_icon.targetsize-48_altform-unplated.png" />
+    <Content Include="Resources\AppIcon\badge_logo.png" />
+    <Content Include="Resources\AppIcon\badge_logo.scale-100.png" />
+    <Content Include="Resources\AppIcon\badge_logo.scale-125.png" />
+    <Content Include="Resources\AppIcon\badge_logo.scale-150.png" />
+    <Content Include="Resources\AppIcon\badge_logo.scale-200.png" />
+    <Content Include="Resources\AppIcon\badge_logo.scale-400.png" />
+    <Content Include="Resources\AppIcon\big_tile.png" />
+    <Content Include="Resources\AppIcon\big_tile.scale-100.png" />
+    <Content Include="Resources\AppIcon\big_tile.scale-125.png" />
+    <Content Include="Resources\AppIcon\big_tile.scale-150.png" />
+    <Content Include="Resources\AppIcon\big_tile.scale-200.png" />
+    <Content Include="Resources\AppIcon\big_tile.scale-400.png" />
+    <Content Include="Resources\AppIcon\normal_tile.png" />
+    <Content Include="Resources\AppIcon\normal_tile.scale-100.png" />
+    <Content Include="Resources\AppIcon\normal_tile.scale-125.png" />
+    <Content Include="Resources\AppIcon\normal_tile.scale-150.png" />
+    <Content Include="Resources\AppIcon\normal_tile.scale-200.png" />
+    <Content Include="Resources\AppIcon\normal_tile.scale-400.png" />
+    <Content Include="Resources\AppIcon\pkg_logo.png" />
+    <Content Include="Resources\AppIcon\pkg_logo.scale-100.png" />
+    <Content Include="Resources\AppIcon\pkg_logo.scale-125.png" />
+    <Content Include="Resources\AppIcon\pkg_logo.scale-150.png" />
+    <Content Include="Resources\AppIcon\pkg_logo.scale-200.png" />
+    <Content Include="Resources\AppIcon\pkg_logo.scale-400.png" />
+    <Content Include="Resources\AppIcon\small_tile.png" />
+    <Content Include="Resources\AppIcon\small_tile.scale-100.png" />
+    <Content Include="Resources\AppIcon\small_tile.scale-125.png" />
+    <Content Include="Resources\AppIcon\small_tile.scale-150.png" />
+    <Content Include="Resources\AppIcon\small_tile.scale-200.png" />
+    <Content Include="Resources\AppIcon\small_tile.scale-400.png" />
+    <Content Include="Resources\AppIcon\splash.png" />
+    <Content Include="Resources\AppIcon\splash.scale-100.png" />
+    <Content Include="Resources\AppIcon\splash.scale-125.png" />
+    <Content Include="Resources\AppIcon\splash.scale-150.png" />
+    <Content Include="Resources\AppIcon\splash.scale-200.png" />
+    <Content Include="Resources\AppIcon\splash.scale-400.png" />
+    <Content Include="Resources\AppIcon\wide_tile.png" />
+    <Content Include="Resources\AppIcon\wide_tile.scale-100.png" />
+    <Content Include="Resources\AppIcon\wide_tile.scale-125.png" />
+    <Content Include="Resources\AppIcon\wide_tile.scale-150.png" />
+    <Content Include="Resources\AppIcon\wide_tile.scale-200.png" />
+    <Content Include="Resources\AppIcon\wide_tile.scale-400.png" />
+  </ItemGroup>
+
 </Project>
