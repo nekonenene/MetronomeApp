@@ -100,6 +100,7 @@ public class MainPageViewModel : ObservableObject {
     #endregion
 
     private void ResetAudioPlayer() {
+        _audioPlayer?.Dispose();
         _audioPlayer = _audioManager.CreatePlayer(_moveCursorSound);
     }
 
@@ -127,9 +128,8 @@ public class MainPageViewModel : ObservableObject {
                     ResetAudioPlayer();
                 }
 
-                await Task.Delay(1000, _cancellationTokenSource.Token);
+                await Task.Delay(2000, _cancellationTokenSource.Token);
             } catch (TaskCanceledException) { // ResetTickCounter メソッドが呼ばれたときに Task.Delay が中断されここに来る
-                ResetAudioPlayer();
             }
         }
     }
@@ -139,7 +139,8 @@ public class MainPageViewModel : ObservableObject {
             ResetAudioPlayer();
         }
 
-        AutoRefreshAudioPlayer();
+        // 一時的に再生が途切れるので無効化
+        // AutoRefreshAudioPlayer();
 
         while (IsPlaying) {
             try {
@@ -161,6 +162,7 @@ public class MainPageViewModel : ObservableObject {
     private void PlayOrStopSound() {
         if (IsPlaying) {
             IsPlaying = false;
+            ResetAudioPlayer();
             ResetTickCounter();
         } else {
             IsPlaying = true;
